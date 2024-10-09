@@ -29,19 +29,29 @@ void loop() {
   green = digitalRead(SG);
   blue = digitalRead(SB);
 
+  output(red, yellow, white, green, blue);
+
   delay(100);
 }
 
 void output(boolean red, boolean yellow, boolean white, boolean green, boolean blue) {
   if(red == HIGH) {
     Serial.println("SR");
-  } else if(yellow == HIGH) {
+  } 
+
+  if(yellow == HIGH) {
     Serial.println("SY");
-  } else if(white == HIGH) {
+  } 
+
+  if(white == HIGH) {
     Serial.println("SW");
-  } else if(green == HIGH) {
+  } 
+  
+  if(green == HIGH) {
     Serial.println("SG");
-  } else if(blue == HIGH) {
+  } 
+  
+  if(blue == HIGH) {
     Serial.println("SW");
   }
 }
