@@ -1,18 +1,47 @@
 #include <Arduino.h>
 
-// put function declarations here:
-int myFunction(int, int);
+const int SR = 2; // Red switch
+const int SY = 3; // Yellow switch
+const int SW = 4; // White switch
+const int SG = 5; // Green switch
+const int SB = 6; // Blue switch
 
+// Determining if switches have been pressed
+void output(boolean, boolean, boolean, boolean, boolean);
+
+// Setput serial communication and pins 
 void setup() {
-  // put your setup code here, to run once:
-  int result = myFunction(2, 3);
+  Serial.begin(115200);
+  pinMode(SR, INPUT);
+  pinMode(SY, INPUT);
+  pinMode(SW, INPUT);
+  pinMode(SG, INPUT);
+  pinMode(SB, INPUT);
 }
 
+// The main operation
 void loop() {
-  // put your main code here, to run repeatedly:
+  boolean red, yellow, white, green, blue;
+
+  red = digitalRead(SR);
+  yellow = digitalRead(SY);
+  white = digitalRead(SW);
+  green = digitalRead(SG);
+  blue = digitalRead(SB);
+
+  delay(100);
 }
 
-// put function definitions here:
-int myFunction(int x, int y) {
-  return x + y;
+void output(boolean red, boolean yellow, boolean white, boolean green, boolean blue) {
+  if(red == HIGH) {
+    Serial.println("SR");
+  } else if(yellow == HIGH) {
+    Serial.println("SY");
+  } else if(white == HIGH) {
+    Serial.println("SW");
+  } else if(green == HIGH) {
+    Serial.println("SG");
+  } else if(blue == HIGH) {
+    Serial.println("SW");
+  }
 }
