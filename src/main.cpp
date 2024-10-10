@@ -31,7 +31,7 @@ void loop() {
 
   output(red, yellow, white, green, blue);
 
-  delay(100);
+  delay(10);
 }
 
 void output(boolean red, boolean yellow, boolean white, boolean green, boolean blue) {
