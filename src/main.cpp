@@ -46,12 +46,12 @@ void output(boolean red, boolean yellow, boolean white, boolean green, boolean b
   if(white == HIGH) {
     Serial.println("SW");
   } 
-  
+
   if(green == HIGH) {
     Serial.println("SG");
   } 
   
   if(blue == HIGH) {
-    Serial.println("SW");
+    Serial.println("SB");
   }
 }
