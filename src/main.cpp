@@ -6,8 +6,12 @@ const int SW = 4; // White switch
 const int SG = 5; // Green switch
 const int SB = 6; // Blue switch
 
+const int RL = A0; // Variable resistor on the left
+const int RR = A1; // Variable resistor on the right
+
 String str;
 boolean red, yellow, white, green, blue;
+int left, right, scaledLeft, scaledRight;
 
 // Determining if switches have been pressed
 void output(boolean, boolean, boolean, boolean, boolean);
@@ -22,6 +26,8 @@ void setup() {
   pinMode(SG, INPUT);
   pinMode(SB, INPUT);
 
+  pinMode(RL, INPUT);
+  pinMode(RR, INPUT);
 }
 
 // The main operation
@@ -33,9 +39,16 @@ void loop() {
   white = digitalRead(SW);
   green = digitalRead(SG);
   blue = digitalRead(SB);
+  
+  left = analogRead(RL);
+  right = analogRead(RR); 
+
+  scaledLeft = map(left, 0, 1023, 0, 100);
+  scaledRight = map(right, 0, 1023, 0, 100);
 
   output(red, yellow, white, green, blue);
-  Serial.println(str);
+
+  Serial.println(str + "|" + String(scaledLeft) + "|" + String(scaledRight));
 
   delay(10);
 }
