@@ -13,7 +13,7 @@ String str;
 boolean red, yellow, white, green, blue;
 boolean prevRed = false, prevYellow = false, prevWhite = false, prevGreen = false, prevBlue = false;
 int left, right, scaledLeft, scaledRight;
-int prevScaledLeft = -1, prevScaledRight = -1;
+int prevScaledLeft, prevScaledRight;
 
 // Determining if switches have been pressed
 void output(boolean, boolean, boolean, boolean, boolean);
@@ -48,13 +48,13 @@ void loop() {
   scaledLeft = map(left, 0, 1023, 0, 100);
   scaledRight = map(right, 0, 1023, 0, 100);
 
-  // 状態が変化したかチェック
+  // Check if the states have changed
   if (red != prevRed || yellow != prevYellow || white != prevWhite || green != prevGreen || blue != prevBlue || scaledLeft != prevScaledLeft || scaledRight != prevScaledRight) {
     output(red, yellow, white, green, blue);
     Serial.println(str + "|" + String(scaledLeft) + "|" + String(scaledRight));
   }
 
-  // 状態を更新
+  // Update the states
   prevRed = red;
   prevYellow = yellow;
   prevWhite = white;
